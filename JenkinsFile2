@@ -21,7 +21,7 @@ pipeline
 	 {
 	  steps
 	   {
-	    sh 'scp /var/lib/jenkins/workspace/DeclarativePipeline2/webapp/target/webapp.war ubuntu@172.31.13.164:/var/lib/tomcat9/webapps/testapp7.war'
+	    sh 'scp /var/lib/jenkins/workspace/DeclarativePipeline2/webapp/target/webapp.war ubuntu@172.31.56.34:/var/lib/tomcat9/webapps/testapp7.war'
 
 		}
 	 }
@@ -36,10 +36,10 @@ pipeline
 	 stage('ContinuousDelivery')
 	 {
 	  steps
-	   {
-	    input message: 'Approve delivery of code', submitter: 'srini'
-	    deploy adapters: [tomcat9(credentialsId: 'bfda19c6-2e25-4428-b56e-dd079052d2e7', path: '', url: 'http://172.31.4.50:8080')], contextPath: 'prodapp5', war: '**/*.war'
-		}
-	 }
+           {
+               input message: 'Approve Delivery of Code', submitter: 'srini'
+               deploy adapters: [tomcat9(credentialsId: '91434be3-cdb5-4de6-b4c1-d2023c87be82', path: '', url: 'http://172.31.60.86:8080')], contextPath: 'prodapp5', war: '**/*.war'
+           }
+         }
    }
 }
